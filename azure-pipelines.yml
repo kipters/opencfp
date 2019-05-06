@@ -1,4 +1,5 @@
 # Starter pipeline
+
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
@@ -12,7 +13,12 @@ pool:
 steps:
 
 - script: |
-    ./.docker/build
-  displayName: 'Run build script'
-
-
+    - task: Docker@2
+  inputs:
+    repository: 'kipters/opencfp'
+    command: 'buildAndPush'
+  displayName: 'Build and push Docker image'
+  variables:
+    COMMIT_HASH: $(Build.SourceVersion)
+    BUILD_DATE: 'dummy'
+    VCS_REF: $(Build.SourceVersion)
