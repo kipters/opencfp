@@ -20,4 +20,6 @@ steps:
   inputs:
     repository: 'kipters/opencfp'
     command: 'buildAndPush'
+    Dockerfile: '.docker/Dockerfile'
+    buildContext: '.'
   displayName: 'Build and push Docker image'
