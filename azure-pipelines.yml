@@ -10,15 +10,14 @@ trigger:
 pool:
   vmImage: 'Ubuntu-16.04'
 
-steps:
+variables:
+  COMMIT_HASH: $(Build.SourceVersion)
+  BUILD_DATE: 'dummy'
+  VCS_REF: $(Build.SourceVersion)
 
-- script: |
-    - task: Docker@2
+steps:
+- task: Docker@2
   inputs:
     repository: 'kipters/opencfp'
     command: 'buildAndPush'
   displayName: 'Build and push Docker image'
-  variables:
-    COMMIT_HASH: $(Build.SourceVersion)
-    BUILD_DATE: 'dummy'
-    VCS_REF: $(Build.SourceVersion)
