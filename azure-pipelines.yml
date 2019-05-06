@@ -18,6 +18,7 @@ variables:
 steps:
 - task: Docker@2
   inputs:
+    containerRegistry: '6d4f2b4e-1fbf-4ae8-8d3a-c4db5f0b5c0a'
     repository: 'kipters/opencfp'
     command: 'buildAndPush'
     Dockerfile: '.docker/Dockerfile'
